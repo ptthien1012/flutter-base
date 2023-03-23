@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           create: (context) => AppSettingCubit(),
         )
       ],
-      child: MyAppView(),
+      child: const MyAppView(),
     );
   }
 }
