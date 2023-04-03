@@ -4,15 +4,22 @@ import 'package:flutter/services.dart';
 import 'package:flutter_base/app/router/auto_route.dart';
 import 'package:flutter_base/core/util/observer/route_observer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'generated/assets.gen.dart';
 import 'logic/bloc/app_setting/app_setting_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
+
+  Future.wait([
+    EasyLocalization.ensureInitialized(),
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]),
+    dotenv.load(fileName: Assets.env.env)
   ]);
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
   runApp(
     EasyLocalization(

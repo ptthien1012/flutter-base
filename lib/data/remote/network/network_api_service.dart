@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_base/data/remote/app_expecption.dart';
+import 'package:flutter_base/data/remote/app_exception.dart';
 import 'package:flutter_base/data/remote/network/base_api_service.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -10,7 +10,7 @@ class NetworkApiService extends BaseApiService {
   void init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: dotenv.get('BASE_URL'),
+        baseUrl: '${dotenv.get('BASE_URL')}${dotenv.get('VERSION_CODE')}',
         receiveDataWhenStatusError: true,
         connectTimeout: const Duration(seconds: 30),
         receiveTimeout: const Duration(seconds: 30),
