@@ -1,13 +1,17 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_base/core/util/logger/logger.dart';
 import 'package:flutter_base/data/remote/app_exception.dart';
 import 'package:flutter_base/data/remote/network/base_api_service.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class NetworkApiService extends BaseApiService {
+  NetworkApiService();
+
   static late Dio dio;
 
-  void init() {
+  Future<void> init() async {
+    await dotenv.load(fileName: 'assets/env/.env');
     dio = Dio(
       BaseOptions(
         baseUrl: '${dotenv.get('BASE_URL')}${dotenv.get('VERSION_CODE')}',
@@ -50,12 +54,13 @@ class NetworkApiService extends BaseApiService {
           contentType: Headers.jsonContentType,
         ),
       );
-      responseJson = returnResponse(response);
+      logger.i(response);
+      responseJson = await returnResponse(response);
     } on DioError catch (exception) {
       handleException(exception);
     }
 
-    responseJson;
+    return responseJson;
   }
 
   @override

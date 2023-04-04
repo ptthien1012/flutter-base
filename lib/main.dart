@@ -1,25 +1,24 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_base/core/app/injection/injection.dart';
+import 'package:flutter_base/core/app/router/app_routes.route.dart';
 import 'package:flutter_base/core/util/observer/route_observer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import 'app/injection/injection.dart';
-import 'app/router/app_routes.route.dart';
 import 'generated/assets.gen.dart';
 import 'logic/bloc/app_setting/app_setting_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  Future.wait([
+  await Future.wait([
+    dotenv.load(fileName: 'assets/env/.env'),
     EasyLocalization.ensureInitialized(),
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]),
-    dotenv.load(fileName: Assets.env.env),
-    configureDependencies(),
+    initializeDependencies(),
   ]);
 
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
@@ -69,7 +68,9 @@ class MyAppView extends StatelessWidget {
           locale: context.locale,
           debugShowCheckedModeBanner: false,
           routerConfig: _appRouter.config(
-            navigatorObservers: () => [AppRouteObserver()],
+            navigatorObservers: () => [
+              AppRouteObserver(),
+            ],
           ),
         );
       },

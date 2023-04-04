@@ -1,27 +1,27 @@
 abstract class BaseApiService {
   Future<dynamic> getResponse(
     String url, {
-    required header,
+    header,
     String? function,
   });
 
   Future<dynamic> getResponseByID(
     String url, {
-    required header,
+    header,
     String? function,
     id,
   });
 
   Future<dynamic> postResponse(
     String url, {
-    required header,
+    header,
     String? function,
     body,
   });
 
   Future<dynamic> putResponse(
     String url, {
-    required header,
+    header,
     String? function,
     id,
     body,
@@ -29,7 +29,7 @@ abstract class BaseApiService {
 
   Future<dynamic> deleteResponse(
     String url, {
-    required header,
+    header,
     id,
     body,
   });
@@ -43,7 +43,7 @@ abstract class BaseApiService {
 
   Future<dynamic> uploadFile(
     String url, {
-    required header,
+    header,
     String? function,
     required String filePath,
   });

@@ -12,11 +12,11 @@ environment:
 scripts:
   # run is a default script. To use it, simply type
   # in the command line: "rps" - that's all!
-  gen: "fvm flutter pub run easy_localization:generate -S assets/translations -f keys -o locale_keys.g.dart && fvm flutter pub run build_runner watch -d"
+  gen: "fvm flutter pub run easy_localization:generate -S assets/locale -f keys -o locale_keys.g.dart && fvm flutter pub run build_runner watch -d"
   # run generate localizations
-  localization: "fvm flutter pub run easy_localization:generate -S lib/app/locale -f keys -o locale_keys.g.dart"
+  localization: "fvm flutter pub run easy_localization:generate -S assets/locale -f keys -o locale_keys.g.dart"
   # pub get -> generate localization -> run build_runner
-  get: "fvm flutter pub get && fvm flutter pub run easy_localization:generate -S lib/app/locale/translations -f keys -o locale_keys.g.dart && fvm flutter pub run build_runner watch -d"
+  get: "fvm flutter pub get && fvm flutter pub run easy_localization:generate -S assets/locale -f keys -o locale_keys.g.dart && fvm flutter pub run build_runner watch -d"
   # format after pushing
   format: "dart format"
   # pub clean -> pub get -> generate localization -> run build_runner
@@ -75,7 +75,7 @@ flutter:
     - assets/env/
 
   # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list s            hould have a
+  # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
