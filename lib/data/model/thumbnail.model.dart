@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'thumbnail_model.freezed.dart';
+part 'thumbnail.model.freezed.dart';
+part 'thumbnail.model.g.dart';
 
 @freezed
 class Thumbnail with _$Thumbnail {

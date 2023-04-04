@@ -1,7 +1,8 @@
-import 'package:flutter_base/data/model/contexts_model.dart';
+import 'package:flutter_base/data/model/contexts.model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'suggest_auto_complete_all_model.freezed.dart';
+part 'suggest_auto_complete_all.model.freezed.dart';
+part 'suggest_auto_complete_all.model.g.dart';
 
 @freezed
 class SuggestAutocompleteAll with _$SuggestAutocompleteAll {

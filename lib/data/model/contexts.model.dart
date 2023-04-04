@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'contexts_model.freezed.dart';
+part 'contexts.model.freezed.dart';
+part 'contexts.model.g.dart';
 
 @freezed
 class Contexts with _$Contexts {

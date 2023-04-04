@@ -1,0 +1,42 @@
+targets:
+  $default:
+    builders:
+      auto_route_generator|autoRouteGenerator:
+        enabled: true
+        generate_for:
+          include:
+            - lib/app/route/app_routes.routes.dart
+
+      json_serializable:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**.model.dart
+            - lib/**_bloc.dart
+            - lib/**_cubit.dart
+
+        options:
+          explicit_to_json: true
+          include_if_null: false
+
+      freezed|freezed:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**.model.dart
+            - lib/**_bloc.dart
+            - lib/**_cubit.dart
+
+      injectable_generator|injectable_builder:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**_bloc.dart
+            - lib/**_cubit.dart
+            - lib/**.dao.dart
+
+      injectable_generator|injectable_config_builder:
+        enabled: true
+        generate_for:
+          include:
+            - lib/app/injection/injection.dart

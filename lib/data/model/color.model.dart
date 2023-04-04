@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'color_model.freezed.dart';
+part 'color.model.freezed.dart';
+part 'color.model.g.dart';
 
 @freezed
 class Color with _$Color {

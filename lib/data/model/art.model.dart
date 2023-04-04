@@ -2,12 +2,13 @@
 //
 //     final art = artFromMap(jsonString);
 
-import 'package:flutter_base/data/model/color_model.dart';
-import 'package:flutter_base/data/model/suggest_auto_complete_all_model.dart';
-import 'package:flutter_base/data/model/thumbnail_model.dart';
+import 'package:flutter_base/data/model/color.model.dart';
+import 'package:flutter_base/data/model/suggest_auto_complete_all.model.dart';
+import 'package:flutter_base/data/model/thumbnail.model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'art_model.freezed.dart';
+part 'art.model.freezed.dart';
+part 'art.model.g.dart';
 
 @freezed
 class Art with _$Art {

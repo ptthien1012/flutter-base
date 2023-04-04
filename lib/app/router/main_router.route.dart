@@ -3,9 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_base/view/screen/detail_screen/detail_page.dart';
 import 'package:flutter_base/view/screen/home_screen/home_page.dart';
 
-part 'auto_route.gr.dart';
+part 'main_router.route.gr.dart';
 
-@AutoRouterConfig(replaceInRouteName: 'Page,Route')
+@AutoRouterConfig(
+  replaceInRouteName: 'Page,Route',
+)
 class AppRouter extends _$AppRouter {
   @override
   RouteType get defaultRouteType => const RouteType.cupertino();
