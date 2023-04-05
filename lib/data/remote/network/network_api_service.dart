@@ -24,7 +24,7 @@ class NetworkApiService extends BaseApiService {
   }
 
   @override
-  Future deleteResponse(String url, {required header, id, body}) async {
+  Future deleteResponse(String url, {header, id, body}) async {
     dynamic responseJson;
     try {
       final response = await dio.delete(
@@ -44,16 +44,20 @@ class NetworkApiService extends BaseApiService {
   }
 
   @override
-  Future getResponse(String url, {required header, String? function}) async {
+  Future getResponse(
+    String url, {
+    header,
+    String? function,
+    Map<String, dynamic>? queryParameters,
+  }) async {
     dynamic responseJson;
     try {
-      final response = await dio.get(
-        function == null ? url : '$url/$function',
-        options: Options(
-          headers: header,
-          contentType: Headers.jsonContentType,
-        ),
-      );
+      final response = await dio.get(function == null ? url : '$url/$function',
+          options: Options(
+            headers: header,
+            contentType: Headers.jsonContentType,
+          ),
+          queryParameters: queryParameters);
       logger.i(response);
       responseJson = await returnResponse(response);
     } on DioError catch (exception) {
@@ -66,7 +70,7 @@ class NetworkApiService extends BaseApiService {
   @override
   Future getResponseByID(
     String url, {
-    required header,
+    header,
     String? function,
     id,
   }) async {
@@ -88,8 +92,7 @@ class NetworkApiService extends BaseApiService {
   }
 
   @override
-  Future postResponse(String url,
-      {required header, String? function, body}) async {
+  Future postResponse(String url, {header, String? function, body}) async {
     dynamic responseJson;
     try {
       final response = await dio.post(
@@ -108,8 +111,7 @@ class NetworkApiService extends BaseApiService {
   }
 
   @override
-  Future putResponse(String url,
-      {required header, String? function, id, body}) async {
+  Future putResponse(String url, {header, String? function, id, body}) async {
     dynamic responseJson;
 
     try {
@@ -122,18 +124,6 @@ class NetworkApiService extends BaseApiService {
     }
     return responseJson;
   }
-
-  // @override
-  // Future uploadListFiles(String url,
-  //     {required header,
-  //     String? function,
-  //     required List<String> listFilePath}) async {
-  //   try {
-  //       reurn
-  //   } on DioError catch (exception) {
-  //     returnResponse(exception.response!);
-  //   }
-  // }
 
   void handleException(DioError exception) {
     if (exception.type == DioErrorType.unknown) {
@@ -190,7 +180,7 @@ class NetworkApiService extends BaseApiService {
 
   @override
   Future uploadFile(String url,
-      {required header, String? function, required String filePath}) {
+      {header, String? function, required String filePath}) {
     // TODO: implement uploadFile
     throw UnimplementedError();
   }

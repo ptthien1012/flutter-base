@@ -1,4 +1,4 @@
 class ApiEndpoint {
   String get user => 'user';
-  String get artworks => 'artworks';
+  String get artworks => 'images';
 }

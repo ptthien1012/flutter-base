@@ -1,112 +1,17 @@
-// To parse this JSON data, do
-//
-//     final art = artFromMap(jsonString);
-
-import 'package:flutter_base/data/model/color.model.dart';
-import 'package:flutter_base/data/model/suggest_auto_complete_all.model.dart';
-import 'package:flutter_base/data/model/thumbnail.model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'dart:convert';
 
 part 'art.model.freezed.dart';
 part 'art.model.g.dart';
 
+Art artFromJson(String str) => Art.fromJson(json.decode(str));
+
+String artToJson(Art data) => json.encode(data.toJson());
+
 @freezed
 class Art with _$Art {
   const factory Art({
-    required int id,
-    required String apiModel,
-    required String apiLink,
-    required bool isBoosted,
-    required String title,
-    required dynamic altTitles,
-    required Thumbnail thumbnail,
-    required String mainReferenceNumber,
-    required bool hasNotBeenViewedMuch,
-    required dynamic boostRank,
-    required int dateStart,
-    required int dateEnd,
-    required String dateDisplay,
-    required String dateQualifierTitle,
-    required dynamic dateQualifierId,
-    required String artistDisplay,
-    required String placeOfOrigin,
-    required String dimensions,
-    required String mediumDisplay,
-    required String inscriptions,
-    required String creditLine,
-    required dynamic catalogueDisplay,
-    required String publicationHistory,
-    required String exhibitionHistory,
-    required String provenanceText,
-    required String publishingVerificationLevel,
-    required int internalDepartmentId,
-    required int fiscalYear,
-    required dynamic fiscalYearDeaccession,
-    required bool isPublicDomain,
-    required bool isZoomable,
-    required int maxZoomWindowSize,
-    required dynamic copyrightNotice,
-    required bool hasMultimediaResources,
-    required bool hasEducationalResources,
-    required bool hasAdvancedImaging,
-    required double colorfulness,
-    required Color color,
-    required double latitude,
-    required double longitude,
-    required String latlon,
-    required bool isOnView,
-    required String onLoanDisplay,
-    required dynamic galleryTitle,
-    required dynamic galleryId,
-    required String artworkTypeTitle,
-    required int artworkTypeId,
-    required String departmentTitle,
-    required String departmentId,
-    required int artistId,
-    required String artistTitle,
-    required List<dynamic> altArtistIds,
-    required List<int> artistIds,
-    required List<String> artistTitles,
-    required List<String> categoryIds,
-    required List<String> categoryTitles,
-    required List<String> termTitles,
-    required String styleId,
-    required String styleTitle,
-    required List<dynamic> altStyleIds,
-    required List<String> styleIds,
-    required List<String> styleTitles,
-    required String classificationId,
-    required String classificationTitle,
-    required List<String> altClassificationIds,
-    required List<String> classificationIds,
-    required List<String> classificationTitles,
-    required String subjectId,
-    required List<String> altSubjectIds,
-    required List<String> subjectIds,
-    required List<String> subjectTitles,
-    required String materialId,
-    required List<String> altMaterialIds,
-    required List<String> materialIds,
-    required List<String> materialTitles,
-    required String techniqueId,
-    required List<String> altTechniqueIds,
-    required List<String> techniqueIds,
-    required List<String> techniqueTitles,
-    required List<String> themeTitles,
-    required String imageId,
-    required List<dynamic> altImageIds,
-    required List<String> documentIds,
-    required List<String> soundIds,
-    required List<dynamic> videoIds,
-    required List<dynamic> textIds,
-    required List<dynamic> sectionIds,
-    required List<dynamic> sectionTitles,
-    required List<dynamic> siteIds,
-    required String suggestAutocompleteBoosted,
-    required List<SuggestAutocompleteAll> suggestAutocompleteAll,
-    required DateTime sourceUpdatedAt,
-    required DateTime updatedAt,
-    required DateTime timestamp,
+    @JsonKey(name: 'iiif_url') String? url,
   }) = _Art;
 
   factory Art.fromJson(Map<String, dynamic> json) => _$ArtFromJson(json);

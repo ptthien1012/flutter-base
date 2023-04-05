@@ -13,15 +13,18 @@ class ArtRepositoryImpl extends ArtRepository {
   final BaseApiService _apiService;
 
   @override
-  Future<List<Art?>> getArts({required int page, required int limit}) async {
+  Future<List<Art>> getArts({required int page, required int limit}) async {
     try {
       dynamic response = await _apiService.getResponse(ApiEndpoint().artworks,
-          header: {"accept": "application/json"});
+          header: {"accept": "application/json"},
+          queryParameters: {'page': page, 'limit': limit});
       if (response != null) {
-        logger.i(response.toString());
-        return [];
+        final listData = (response['data'] as List)
+            .map((item) => Art.fromJson(item))
+            .toList();
+        return listData;
       }
-      logger.i(response.toString());
+
       return [];
     } catch (e) {
       logger.e(e.toString());

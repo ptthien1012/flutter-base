@@ -3,6 +3,7 @@ abstract class BaseApiService {
     String url, {
     header,
     String? function,
+    Map<String, dynamic>? queryParameters,
   });
 
   Future<dynamic> getResponseByID(
