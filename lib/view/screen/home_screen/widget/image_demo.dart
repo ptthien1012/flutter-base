@@ -19,6 +19,7 @@ class ImageDemo extends StatelessWidget {
       image:
           '$url/full/${UiTool().getScreenHeight(context: context).round()},/0/default.jpg',
       placeholder: kTransparentImage,
+      // placeholderCacheHeight: 0,
     );
   }
 }

@@ -11,16 +11,19 @@ class NetworkApiService extends BaseApiService {
   static late Dio dio;
 
   Future<void> init() async {
-    await dotenv.load(fileName: 'assets/env/.env');
-    dio = Dio(
-      BaseOptions(
-        baseUrl: '${dotenv.get('BASE_URL')}${dotenv.get('VERSION_CODE')}',
-        receiveDataWhenStatusError: true,
-        connectTimeout: const Duration(seconds: 30),
-        receiveTimeout: const Duration(seconds: 30),
-        sendTimeout: const Duration(seconds: 30),
-      ),
-    );
+    try {
+      await dotenv.load(fileName: 'assets/env/.env');
+      dio = Dio(
+        BaseOptions(
+          baseUrl: '${dotenv.get('BASE_URL')}${dotenv.get('VERSION_CODE')}',
+          receiveDataWhenStatusError: true,
+          connectTimeout: const Duration(seconds: 30),
+          receiveTimeout: const Duration(seconds: 30),
+          sendTimeout: const Duration(seconds: 30),
+          headers: {'Accept': 'application/json'},
+        ),
+      );
+    } catch (e) {}
   }
 
   @override

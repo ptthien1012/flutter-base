@@ -16,7 +16,6 @@ class ArtRepositoryImpl extends ArtRepository {
   Future<List<Art>> getArts({required int page, required int limit}) async {
     try {
       dynamic response = await _apiService.getResponse(ApiEndpoint().artworks,
-          header: {"accept": "application/json"},
           queryParameters: {'page': page, 'limit': limit});
       if (response != null) {
         final listData = (response['data'] as List)
