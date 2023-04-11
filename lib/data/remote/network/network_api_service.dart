@@ -23,7 +23,9 @@ class NetworkApiService extends BaseApiService {
           headers: {'Accept': 'application/json'},
         ),
       );
-    } catch (e) {}
+    } catch (e) {
+      logger.e(e.toString());
+    }
   }
 
   @override
