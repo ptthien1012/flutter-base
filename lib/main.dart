@@ -6,21 +6,23 @@ import 'package:flutter_base/core/app/router/app_routes.route.dart';
 import 'package:flutter_base/core/util/observer/route_observer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'generated/assets.gen.dart';
 import 'logic/bloc/app_setting/app_setting_cubit.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await Future.wait([
     dotenv.load(fileName: 'assets/env/.env'),
+    Hive.initFlutter(),
     EasyLocalization.ensureInitialized(),
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]),
     initializeDependencies(),
   ]);
-
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
   runApp(
     EasyLocalization(

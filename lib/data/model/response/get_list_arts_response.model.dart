@@ -1,12 +1,14 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
-import '../art.model.dart';
+import 'package:flutter_base/data/model/response/art.model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'get_list_arts_response.model.g.dart';
 
 @JsonSerializable()
 class GetListArtsResponse {
-  final Art? listArt;
+  @Key("data")
+  final List<Art>? listArt;
   GetListArtsResponse({this.listArt});
 
   factory GetListArtsResponse.fromJson(Map<String, dynamic> json) =>

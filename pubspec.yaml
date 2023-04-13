@@ -59,6 +59,10 @@ dependencies:
   lottie: ^2.3.1
   transparent_image: ^2.0.1
   retrofit: ^4.0.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  package_info: ^2.0.2
+  package_info_plus: ^3.1.0
 
 dev_dependencies:
   flutter_test:
