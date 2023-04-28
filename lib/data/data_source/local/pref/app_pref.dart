@@ -20,7 +20,7 @@ class AppPref extends PrefHelper {
   }
 
   @override
-  Future<String?> getToken() {
+  Future<String?>? getToken() {
     return _prefBox.get(_tokenKey);
   }
 

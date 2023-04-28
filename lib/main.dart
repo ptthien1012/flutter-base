@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,22 +10,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
-import 'generated/assets.gen.dart';
 import 'logic/bloc/app_setting/app_setting_cubit.dart';
 
 Future<void> main() async {
+  await Hive.initFlutter();
   await Future.wait([
     dotenv.load(fileName: 'assets/env/.env'),
-    Hive.initFlutter(),
+    initializeDependencies(),
     EasyLocalization.ensureInitialized(),
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]),
-    initializeDependencies(),
   ]);
-  WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     EasyLocalization(
       supportedLocales: const [
