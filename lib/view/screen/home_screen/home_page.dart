@@ -1,8 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base/view/screen/home_screen/cubit/get_art_cubit.dart';
-import 'package:flutter_base/view/screen/home_screen/view/home_view.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -10,9 +7,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GetArtCubit()..getListArt(),
-      child: const HomeView(),
+    return Scaffold(
+      body: Column(
+        children: [
+          Text('Regular'),
+        ],
+      ),
     );
   }
 }

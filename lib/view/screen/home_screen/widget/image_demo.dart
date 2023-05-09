@@ -14,6 +14,9 @@ class ImageDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FadeInImage.memoryNetwork(
+      imageErrorBuilder: (context, error, stackTrace) {
+        return const SizedBox();
+      },
       fit: BoxFit.fitWidth,
       width: UiTool().getScreenWidth(context: context),
       image:

@@ -1,16 +1,13 @@
-import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_base/config/theme/app_theme.dart';
 import 'package:flutter_base/core/app/injection/injection.dart';
-import 'package:flutter_base/core/app/router/app_routes.route.dart';
 import 'package:flutter_base/core/util/observer/route_observer.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'logic/bloc/app_setting/app_setting_cubit.dart';
+
+import 'config/router/main_router.route.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
@@ -46,14 +43,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => AppSettingCubit(),
-        )
-      ],
-      child: MyAppView(),
-    );
+    return MyAppView();
   }
 }
 
@@ -63,20 +53,17 @@ class MyAppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppSettingCubit, AppSettingState>(
-      builder: (context, state) {
-        return MaterialApp.router(
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          debugShowCheckedModeBanner: false,
-          routerConfig: _appRouter.config(
-            navigatorObservers: () => [
-              AppRouteObserver(),
-            ],
-          ),
-        );
-      },
+    return MaterialApp.router(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      theme: AppTheme.light,
+      debugShowCheckedModeBanner: false,
+      routerConfig: _appRouter.config(
+        navigatorObservers: () => [
+          AppRouteObserver(),
+        ],
+      ),
     );
   }
 }

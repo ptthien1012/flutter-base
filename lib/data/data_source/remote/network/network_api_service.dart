@@ -1,3 +1,4 @@
+import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_base/core/util/logger/logger.dart';
 import 'package:flutter_base/data/data_source/remote/interceptor/header_interceptor.dart';
@@ -5,8 +6,6 @@ import 'package:flutter_base/data/data_source/remote/interceptor/header_intercep
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class NetworkApiService {
-  NetworkApiService();
-
   static late Dio dio;
 
   Future<Dio> init() async {
@@ -26,6 +25,10 @@ class NetworkApiService {
 
       // Interceptor header dio
       dio.interceptors.add(HeaderInterceptor());
+
+      // Interceptor dio log
+      dio.interceptors.add(AwesomeDioInterceptor());
+
       return dio;
     } catch (e) {
       logger.e(e.toString());

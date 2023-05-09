@@ -25,6 +25,7 @@ class _HomeViewState extends State<HomeView> {
       builder: (context, state) {
         return Scaffold(
           body: ListView.builder(
+            shrinkWrap: true,
             controller: _scrollController,
             itemCount: state.arts.length,
             itemBuilder: (context, index) {
