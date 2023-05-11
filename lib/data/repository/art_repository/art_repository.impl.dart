@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_base/core/util/logger/logger.dart';
 import 'package:flutter_base/data/data_source/remote/network/art_data_source.dart';
 import 'package:flutter_base/data/data_source/remote/response/art_work_response.model.dart';
-import 'package:flutter_base/data/model/art.model.dart';
+import 'package:flutter_base/data/model/art_model_response/art.model.dart';
 import 'package:flutter_base/data/repository/art_repository/art_repository.dart';
 import 'package:get_it/get_it.dart';
 

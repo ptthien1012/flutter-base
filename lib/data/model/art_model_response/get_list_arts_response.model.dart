@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_base/data/model/art.model.dart';
+import 'package:flutter_base/data/model/art_model_response/art.model.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 

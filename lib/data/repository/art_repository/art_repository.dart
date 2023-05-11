@@ -1,4 +1,4 @@
-import 'package:flutter_base/data/model/art.model.dart';
+import 'package:flutter_base/data/model/art_model_response/art.model.dart';
 
 abstract class ArtRepository {
   ArtRepository();
