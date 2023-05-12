@@ -4,10 +4,13 @@ import 'package:dio/dio.dart';
 
 part 'art_data_source.g.dart';
 
-@RestApi(parser: Parser.MapSerializable)
+@RestApi(parser: Parser.JsonSerializable)
 abstract class ArtDataSource {
   factory ArtDataSource(Dio dio, {String baseUrl}) = _ArtDataSource;
 
   @GET("/images")
-  Future<ArtWorkResponseModel> getArtWorks();
+  Future<HttpResponse<ArtWorkResponseModel>> getArtWorks({
+    required int page,
+    required int limit,
+  });
 }

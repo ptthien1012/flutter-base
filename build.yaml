@@ -17,7 +17,7 @@ targets:
             - lib/**.model.dart
             - lib/**_bloc.dart
             - lib/**_cubit.dart
-
+            - lib/**_source.dart
         options:
           explicit_to_json: true
           include_if_null: false
