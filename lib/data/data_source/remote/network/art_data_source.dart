@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 
 part 'art_data_source.g.dart';
 
-@RestApi()
+@RestApi(parser: Parser.MapSerializable)
 abstract class ArtDataSource {
   factory ArtDataSource(Dio dio, {String baseUrl}) = _ArtDataSource;
 

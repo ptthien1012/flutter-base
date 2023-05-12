@@ -12,13 +12,26 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetArtCubit()..getListArt(),
-      child: Scaffold(
-        body: Column(
-          children: [
-            Text('Regular'),
-          ],
-        ),
-      ),
+      child: const HomeView(),
+    );
+  }
+}
+
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<GetArtCubit, GetArtState>(
+      builder: (context, state) {
+        return Scaffold(
+          body: Column(
+            children: [
+              Text('Regular'),
+            ],
+          ),
+        );
+      },
     );
   }
 }
