@@ -9,6 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'config/router/main_router.route.dart';
 
+final _appRouter = AppRouter();
 Future<void> main() async {
   await Hive.initFlutter();
   await Future.wait([
@@ -49,7 +50,6 @@ class MyApp extends StatelessWidget {
 
 class MyAppView extends StatelessWidget {
   MyAppView({super.key});
-  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
