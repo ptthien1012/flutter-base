@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'art_work_response.model.g.dart';
 
-@JsonSerializable(createToJson: false, checked: true)
+@JsonSerializable()
 class ArtWorkResponseModel extends ApiResponse {
   @JsonKey(name: 'data', defaultValue: [])
   final List<Art>? artworks;

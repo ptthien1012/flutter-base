@@ -15,9 +15,9 @@ class NetworkApiService {
         BaseOptions(
           baseUrl: '${dotenv.get('BASE_URL')}${dotenv.get('VERSION_CODE')}',
           receiveDataWhenStatusError: true,
-          connectTimeout: const Duration(seconds: 30),
-          receiveTimeout: const Duration(seconds: 30),
-          sendTimeout: const Duration(seconds: 30),
+          connectTimeout: const Duration(seconds: 5),
+          receiveTimeout: const Duration(seconds: 5),
+          sendTimeout: const Duration(seconds: 5),
           headers: {'Accept': 'application/json'},
           contentType: 'application/json',
         ),
@@ -30,7 +30,7 @@ class NetworkApiService {
       dio.interceptors.add(AwesomeDioInterceptor());
 
       return dio;
-    } catch (e) {
+    } on DioException catch (e) {
       logger.e(e.toString());
       rethrow;
     }
