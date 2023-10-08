@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_base/core/util/tool/ui_tool.dart';
+import 'package:flutter_base/core/utils/tool/ui_tool.dart';
 import 'package:flutter_base/generated/assets.gen.dart';
 
 import 'package:image/image.dart' as ImageProcess;

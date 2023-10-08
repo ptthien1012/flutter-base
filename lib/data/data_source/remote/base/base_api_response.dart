@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_base/core/util/data/data_state.dart';
+import 'package:flutter_base/core/utils/data/data_state.dart';
 import 'package:retrofit/retrofit.dart';
 
 abstract class BaseApiResponse {

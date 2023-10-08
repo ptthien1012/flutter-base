@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_base/config/theme/app_theme.dart';
 import 'package:flutter_base/core/app/injection/injection.dart';
-import 'package:flutter_base/core/util/observer/route_observer.dart';
+import 'package:flutter_base/core/utils/observer/route_observer.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -11,8 +11,8 @@ import 'config/router/main_router.route.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
+  await dotenv.load(fileName: 'assets/env/.env');
   await Future.wait([
-    dotenv.load(fileName: 'assets/env/.env'),
     initializeDependencies(),
     EasyLocalization.ensureInitialized(),
     SystemChrome.setPreferredOrientations([
@@ -40,7 +40,6 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MyAppView();

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_base/core/util/logger/logger.dart';
+import 'package:flutter_base/core/utils/logger/logger.dart';
 
 class AppRouteObserver extends AutoRouteObserver {
   @override

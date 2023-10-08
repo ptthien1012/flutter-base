@@ -1,10 +1,6 @@
-import 'package:bloc/bloc.dart';
-import 'package:flutter_base/core/app/extension/list_extension.dart';
-
-import 'package:flutter_base/core/util/logger/logger.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter_base/core/utils/data/data_state.dart';
 import 'package:flutter_base/data/model/models.dart';
-import 'package:flutter_base/data/repository/api_repository.dart';
-import 'package:flutter_base/data/repository/art_repository/art_repository.dart';
 import 'package:flutter_base/domain/repository/art_repository.dart';
 import 'package:flutter_base/view/cubit/base/cubit_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,17 +12,18 @@ class GetArtCubit extends BaseCubit<GetArtState> {
   final ArtRepository _apiRepository;
   GetArtCubit(this._apiRepository) : super(const GetArtState());
 
-  Future<void> getListArt({
-    required int page,
-    required int limit,
-  }) async {
-    try {
-      if (isBusy) return;
-      await run(() async {
-        await _apiRepository.fetchArts(page: page, limit: limit);
-      });
-    } catch (e) {
-      logger.e(e);
-    }
+  Future<void> getListArt() async {
+    if (isBusy) return;
+    run(() async {
+      final response =
+          await _apiRepository.fetchArts(page: state.page, limit: state.limit);
+      if (response is DataSuccess) {
+        final List<Art> listArtResponse = response.data?.artworks ?? [];
+        final listArt = List<Art>.from(state.arts)..addAll(listArtResponse);
+        emit(state.copyWith(arts: listArt, page: state.page + 1));
+      } else if (response is DataFailed) {
+        emit(state.copyWith(error: response.error));
+      }
+    });
   }
 }

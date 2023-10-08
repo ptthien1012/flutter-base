@@ -15,7 +15,7 @@ class HeaderInterceptor extends QueuedInterceptorsWrapper {
     RequestInterceptorHandler handler,
   ) async {
     final userAgentValue = await userAgentHintHeader();
-    final appPref = GetIt.I.get<AppPref>();
+    final appPref = await GetIt.I.getAsync<AppPref>();
     final String? token = await appPref.getToken();
     if (token?.isNotEmpty == true) {
       options.headers[authHeaderKey] = '$bearer $token';

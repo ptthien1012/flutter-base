@@ -6,4 +6,5 @@ extension AppColor on String {
   /// output: `Color(0X000000)`
   ///
   /// Prefer an 8-digit hexadecimal integer(0xFFFFFFFF) to instantiate Color.
+  Color get toColor => Color(int.parse('0XFF${substring(1)}'));
 }
