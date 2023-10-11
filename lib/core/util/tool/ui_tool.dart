@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class UiTool {
   double getScreenWidth({required BuildContext context}) {
-    return MediaQuery.of(context).size.width;
+    return MediaQuery.sizeOf(context).width;
   }
 
   double getScreenHeight({required BuildContext context}) {
-    return MediaQuery.of(context).size.height;
+    return MediaQuery.sizeOf(context).height;
   }
 }

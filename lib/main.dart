@@ -13,7 +13,6 @@ final _appRouter = AppRouter();
 Future<void> main() async {
   await Hive.initFlutter();
   await Future.wait([
-    dotenv.load(fileName: 'assets/env/.env'),
     initializeDependencies(),
     EasyLocalization.ensureInitialized(),
     SystemChrome.setPreferredOrientations([
@@ -42,15 +41,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MyAppView();
-  }
-}
-
-class MyAppView extends StatelessWidget {
-  MyAppView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
