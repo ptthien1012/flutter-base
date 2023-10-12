@@ -11,7 +11,7 @@ String artToJson(Art data) => json.encode(data.toJson());
 @freezed
 class Art with _$Art {
   const factory Art({
-    @JsonKey(name: 'iiif_url') String? url,
+    String? url,
   }) = _Art;
 
   factory Art.fromJson(Map<String, dynamic> json) => _$ArtFromJson(json);

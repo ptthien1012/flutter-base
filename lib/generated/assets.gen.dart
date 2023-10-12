@@ -12,11 +12,20 @@ import 'package:flutter/widgets.dart';
 class $AssetsEnvGen {
   const $AssetsEnvGen();
 
-  /// File path: assets/env/.env
-  String get env => 'assets/env/.env';
+  /// File path: assets/env/develop.env
+  String get develop => 'assets/env/develop.env';
+
+  /// File path: assets/env/product.env
+  String get product => 'assets/env/product.env';
+
+  /// File path: assets/env/qa.env
+  String get qa => 'assets/env/qa.env';
+
+  /// File path: assets/env/stag.env
+  String get stag => 'assets/env/stag.env';
 
   /// List of all assets
-  List<String> get values => [env];
+  List<String> get values => [develop, product, qa, stag];
 }
 
 class $AssetsGifGen {
@@ -119,7 +128,16 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider() => AssetImage(_assetName);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
 
   String get path => _assetName;
 

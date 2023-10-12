@@ -9,6 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'config/router/main_router.route.dart';
 
+final _appRouter = AppRouter();
 Future<void> main() async {
   await Hive.initFlutter();
   await dotenv.load(fileName: 'assets/env/.env');
@@ -39,16 +40,6 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MyAppView();
-  }
-}
-
-class MyAppView extends StatelessWidget {
-  MyAppView({super.key});
-  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
