@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'camera.model.freezed.dart';
@@ -11,6 +10,8 @@ class CameraModel with _$CameraModel {
     required double dy,
     required double lens,
     required double angle,
+    required double angleWide,
+    required int id,
   }) = _CameraModel;
 
   factory CameraModel.fromJson(Map<String, dynamic> json) =>

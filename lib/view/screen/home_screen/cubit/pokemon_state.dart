@@ -7,5 +7,6 @@ class PokemonState with _$PokemonState {
     @Default(20) int offset,
     @Default([]) List<CameraModel> listCamera,
     CameraModel? selectedCamera,
+    @Default(Offset.zero) Offset flagHelper,
   }) = _PokemonState;
 }
