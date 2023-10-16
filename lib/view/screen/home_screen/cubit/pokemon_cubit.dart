@@ -18,8 +18,8 @@ class PokemonCubit extends BaseCubit<PokemonState> {
   final _pokemonRepository = getIt.get<PokemonRepository>();
   Future<void> initCamera() async {
     emit(state.copyWith(listCamera: [
-      CameraModel(dx: 0, dy: 0, lens: 20, angle: 0, id: 1, angleWide: 75),
-      CameraModel(dx: 50, dy: 50, lens: 20, angle: 0, id: 2, angleWide: 120),
+      CameraModel(dx: 0, dy: 0, lens: 20, angle: 0, id: 1, angleWide: 120),
+      CameraModel(dx: 50, dy: 50, lens: 20, angle: 0, id: 2, angleWide: 75),
     ]));
   }
 
@@ -30,6 +30,19 @@ class PokemonCubit extends BaseCubit<PokemonState> {
       emit(state.copyWith(offset: state.offset + 20));
     } catch (e) {
       inspect(e);
+    }
+  }
+
+  Future<void> updateCameraSelected(CameraModel cameraModel) async {
+    if (state.selectedCamera == null) {
+      emit(state.copyWith(selectedCamera: cameraModel));
+      return;
+    }
+    if (state.selectedCamera == cameraModel) {
+      return;
+    } else {
+      emit(state.copyWith(selectedCamera: cameraModel));
+      return;
     }
   }
 
@@ -62,7 +75,8 @@ class PokemonCubit extends BaseCubit<PokemonState> {
       if (index != -1) {
         double dxCalculate = position.dx - state.flagHelper.dx;
         double dyCalculate = position.dy - state.flagHelper.dy;
-        double newAngle = (atan2(dxCalculate, dyCalculate) * 180 / pi) - 45;
+        double newAngle = (atan2(dxCalculate, dyCalculate) * 180 / pi) -
+            (state.selectedCamera!.angleWide);
         listCamera[index] = state.selectedCamera!.copyWith(angle: -newAngle);
         emit(state.copyWith(
             selectedCamera: listCamera[index], listCamera: listCamera));
@@ -106,7 +120,7 @@ class PokemonCubit extends BaseCubit<PokemonState> {
       double distance = sqrt(
           pow(positionFlag.dx - state.selectedCamera!.dx, 2) +
               pow(positionFlag.dy - state.selectedCamera!.dy, 2));
-      bool isInside = distance <= 60;
+      bool isInside = distance <= 70;
       if (isInside) return;
 
       emit(state.copyWith(flagHelper: positionFlag));
