@@ -1,1 +1,1 @@
-export './util/utils.dart';
+export 'utils/utils.dart';

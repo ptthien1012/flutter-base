@@ -12,9 +12,9 @@ abstract class ArtDataSource {
     return _ArtDataSource(dio);
   }
 
-  @GET("/images")
+  @GET('/images')
   Future<HttpResponse<ArtWorkResponseModel>> getArtWorks({
-    required int page,
-    required int limit,
+    @Query('id') required int page,
+    @Query('limit') required int limit,
   });
 }
