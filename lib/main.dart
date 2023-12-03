@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_base/config/theme/app_theme.dart';
 import 'package:flutter_base/core/app/injection/injection.dart';
-import 'package:flutter_base/core/util/observer/route_observer.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'config/router/main_router.route.dart';
+import 'core/utils/observer/route_observer.dart';
 
 final _appRouter = AppRouter();
 Future<void> main() async {

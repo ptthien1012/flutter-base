@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_base/core/app/extension/offset_extension.dart';
 import 'package:flutter_base/core/app/injection/injection.dart';
 import 'package:flutter_base/data/model/camera_model/camera.model.dart';
 import 'package:flutter_base/data/model/pokemon_model_response/pokemon.model.dart';
@@ -105,25 +104,6 @@ class PokemonCubit extends BaseCubit<PokemonState> {
           emit(state.copyWith(selectedCamera: cameraModel));
         }
       });
-    } catch (e) {
-      inspect(e);
-    }
-  }
-
-  Future<void> onUpdateFlagHelper(Offset positionFlag) async {
-    try {
-      if (positionFlag.isZero) {
-        emit(state.copyWith(flagHelper: Offset.zero));
-        return;
-      }
-      if (state.selectedCamera == null && positionFlag != Offset.zero) return;
-      double distance = sqrt(
-          pow(positionFlag.dx - state.selectedCamera!.dx, 2) +
-              pow(positionFlag.dy - state.selectedCamera!.dy, 2));
-      bool isInside = distance <= 70;
-      if (isInside) return;
-
-      emit(state.copyWith(flagHelper: positionFlag));
     } catch (e) {
       inspect(e);
     }
