@@ -67,6 +67,7 @@ dependencies:
   built_value: ^8.6.3
   vector_math: ^2.1.4
   talker_bloc_logger: ^2.2.0
+  flutter_local_notifications: ^16.2.0
 
 dev_dependencies:
   flutter_test:
