@@ -15,12 +15,12 @@ class NetworkApiService {
       dio = Dio(
         BaseOptions(
           baseUrl: '${dotenv.get('BASE_URL')}${dotenv.get('VERSION_CODE')}',
-          receiveDataWhenStatusError: true,
-          connectTimeout: const Duration(seconds: 5),
-          receiveTimeout: const Duration(seconds: 5),
-          sendTimeout: const Duration(seconds: 5),
-          headers: {'Accept': 'application/json'},
-          contentType: 'application/json',
+          // receiveDataWhenStatusError: true,
+          connectTimeout: const Duration(seconds: 60),
+          receiveTimeout: const Duration(seconds: 60),
+          sendTimeout: const Duration(seconds: 60),
+          // headers: {'Accept': 'application/json'},
+          // contentType: 'application/json',
         ),
       );
 

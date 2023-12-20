@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base/core/app/injection/injection.dart';
 import 'package:flutter_base/core/core.dart';
-import 'package:flutter_base/view/screen/home_screen/cubit/pokemon_cubit.dart';
+import 'package:flutter_base/data/data_source/remote/queries/list_country_query.model.dart';
+import 'package:flutter_base/domain/repository/weather_repository.dart';
+import 'package:flutter_base/view/screen/home_screen/features/weather/presentation/cubit/weather_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -13,8 +13,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => PokemonCubit()..initCamera(),
-        child: const HomeView());
+      create: (context) => WeatherCubit(),
+      child: const HomeView(),
+    );
   }
 }
 
@@ -28,7 +29,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PokemonCubit, PokemonState>(
+    return BlocBuilder<WeatherCubit, WeatherState>(
       builder: (context, state) {
         return Container(
           color: Colors.white,
@@ -41,9 +42,9 @@ class _HomeViewState extends State<HomeView> {
               children: [
                 GestureDetector(
                   onTap: () async {
-                    final notificationController =
-                        await getIt.getAsync<FlutterLocalNotificationsPlugin>();
-                    notificationController.show(0, 'ptthien', 'demo', null);
+                    await context
+                        .read<WeatherCubit>()
+                        .fetchSearchAutocomplete();
                   },
                   child: Container(
                     height: 50,

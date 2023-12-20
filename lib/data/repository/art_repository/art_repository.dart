@@ -6,7 +6,6 @@ import 'package:flutter_base/data/data_source/remote/response/art_work_response.
 import 'package:flutter_base/domain/repository/art_repository.dart';
 
 class ArtRepositoryImpl extends BaseApiResponse implements ArtRepository {
-  ArtRepositoryImpl();
   final ArtDataSource _artDataSource = getIt.get<ArtDataSource>();
   @override
   Future<DataState<ArtWorkResponseModel>> fetchArts(
