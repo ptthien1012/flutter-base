@@ -23,13 +23,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     EasyLocalization(
-      supportedLocales: const [
-        Locale('en'),
-        Locale('vi'),
-      ],
-      fallbackLocale: const Locale(
-        'vi',
-      ),
+      supportedLocales: const [Locale('en'), Locale('vi')],
+      fallbackLocale: const Locale('en'),
       path: 'assets/locale',
       child: const MyApp(),
     ),
