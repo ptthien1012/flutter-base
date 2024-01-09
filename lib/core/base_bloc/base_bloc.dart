@@ -1,15 +1,21 @@
-import 'dart:async';
+import 'package:bloc/bloc.dart';
+import 'package:flutter_base/core/base_bloc/base_event.dart';
+import 'package:flutter_base/core/base_bloc/base_state.dart';
+import 'package:flutter_base/core/core.dart';
 
-import 'base_state.dart';
+abstract class BaseBloc<E extends BaseEvent, S extends BaseState>
+    extends Bloc<E, S> {
+  BaseBloc(super.initialState);
 
-abstract class BaseBloc<State extends BaseState> {
-  final _stateStreamController = StreamController<BaseState>.broadcast();
-
-  void dispose() {
-    _stateStreamController.close();
+  @override
+  void onTransition(Transition<E, S> transition) {
+    super.onTransition(transition);
+    Log.instance.i(transition);
   }
 
-  void emitState(BaseState state) {
-    _stateStreamController.sink.add(state);
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    super.onError(error, stackTrace);
+    Log.instance.e(error);
   }
 }
