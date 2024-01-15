@@ -6,7 +6,11 @@ class Log extends Logger {
   Log._()
       : super(
           printer: PrettyPrinter(
-              printTime: true, methodCount: 0, noBoxingByDefault: true),
+            printTime: true,
+            methodCount: 0,
+            noBoxingByDefault: false,
+            lineLength: 100,
+          ),
           output: null,
           filter: null,
         );

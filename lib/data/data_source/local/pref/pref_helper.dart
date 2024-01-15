@@ -5,5 +5,5 @@ abstract class PrefHelper {
 
   Future<void> setToken(String token);
 
-  Future<void> setFirstRun(bool isFirstRun);
+  Future<void> setFirstRun({required bool isFirstRun});
 }

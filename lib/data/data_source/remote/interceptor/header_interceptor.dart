@@ -16,7 +16,7 @@ class HeaderInterceptor extends QueuedInterceptorsWrapper {
   ) async {
     final userAgentValue = await userAgentHintHeader();
     final appPref = await GetIt.I.getAsync<AppPref>();
-    final String? token = await appPref.getToken();
+    final token = await appPref.getToken();
     if (token?.isNotEmpty == true) {
       options.headers[authHeaderKey] = '$bearer $token';
     }
@@ -26,7 +26,7 @@ class HeaderInterceptor extends QueuedInterceptorsWrapper {
 
   Future<String> userAgentHintHeader() async {
     try {
-      final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      final packageInfo = await PackageInfo.fromPlatform();
       return '${Platform.operatingSystem} - ${packageInfo.buildNumber}';
     } catch (e) {
       return 'Platform not support get info';

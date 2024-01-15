@@ -6,7 +6,6 @@ class AppPref extends PrefHelper {
   AppPref({required Box<dynamic> prefBox}) : _prefBox = prefBox;
   static const _firstRunKey = 'first_run_key';
   static const _tokenKey = 'token_key';
-  // static const _userKey = "user_key";
 
   final Box<dynamic> _prefBox;
 
@@ -16,7 +15,7 @@ class AppPref extends PrefHelper {
   }
 
   @override
-  Future<void> setFirstRun(bool isFirstRun) async {
+  Future<void> setFirstRun({required bool isFirstRun}) async {
     await _prefBox.put(_firstRunKey, isFirstRun);
   }
 

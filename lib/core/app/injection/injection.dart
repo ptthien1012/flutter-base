@@ -18,8 +18,8 @@ Future<void> initializeDependencies() async {
 
     // Register dataSource
 
-    ..registerLazySingleton<ArtDataSource>(() => ArtDataSource())
-    ..registerLazySingleton<PokemonDataSource>(() => PokemonDataSource())
+    ..registerLazySingleton<ArtDataSource>(ArtDataSource.new)
+    ..registerLazySingleton<PokemonDataSource>(PokemonDataSource.new)
 
     // Register repository
     ..registerLazySingleton<PokemonRepository>(PokemonRepositoryImpl.new)
