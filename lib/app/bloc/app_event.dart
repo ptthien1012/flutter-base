@@ -5,6 +5,18 @@ final class NetworkStatusChanged extends BaseEvent {
   final bool isConnected;
 }
 
+abstract class SupaBaseEvent extends BaseEvent {}
+
+final class SupaBaseSubscribeEvent extends SupaBaseEvent {
+  SupaBaseSubscribeEvent(this.tableName);
+  final String tableName;
+}
+
+final class SendMessages extends SupaBaseEvent {
+  SendMessages(this.message);
+  final String message;
+}
+
 abstract class CounterEvent extends BaseEvent {}
 
 final class IncrementEvent extends CounterEvent {

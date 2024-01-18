@@ -1,18 +1,18 @@
 import 'package:flutter_base/core/base_bloc/base_state.dart';
 
 class AppState extends BaseState<AppState> {
-  const AppState(this.counter);
-  final int counter;
+  const AppState();
+
   @override
-  List<Object?> get props => [counter];
+  List<Object?> get props => [];
 
   @override
   AppState fromJson(Map<String, dynamic> json) {
-    return AppState(json['counter'] as int);
+    return AppState();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'counter': counter};
+    return {};
   }
 }

@@ -11,7 +11,6 @@ class NetworkApiService {
 
   Future<Dio> init() async {
     try {
-      await dotenv.load(fileName: 'assets/env/develop.env');
       dio = Dio(
         BaseOptions(
           baseUrl: '${dotenv.get('BASE_URL')}${dotenv.get('VERSION_CODE')}',

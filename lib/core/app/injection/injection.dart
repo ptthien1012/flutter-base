@@ -13,7 +13,7 @@ import 'package:get_it/get_it.dart';
 final getIt = GetIt.instance;
 Future<void> initializeDependencies() async {
   getIt
-    ..registerSingletonAsync<AppPref>(AppStorage.init().prefHelper)
+    // ..registerSingletonAsync<AppPref>(AppStorage.init().prefHelper)
     ..registerSingletonAsync<Dio>(NetworkApiService().init)
 
     // Register dataSource

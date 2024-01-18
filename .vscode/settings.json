@@ -8,6 +8,7 @@
         "ints",
         "pubspec",
         "redeclares",
+        "SUPABASE",
         "todos",
         "unawaited"
     ]
