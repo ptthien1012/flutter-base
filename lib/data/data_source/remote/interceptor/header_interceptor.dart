@@ -25,6 +25,19 @@ class HeaderInterceptor extends QueuedInterceptorsWrapper {
     handler.next(options);
   }
 
+  @override
+  Future<void> onError(
+    DioException err,
+    ErrorInterceptorHandler handler,
+  ) async {
+    final error = err.response?.data['error_code'];
+
+    // if(error == ErrorCodes.unauthorized) {
+    //   // await GetIt.I.getAsync<AppPref>().then((value) => value.clearToken());
+    // }
+    // Handle signOut
+  }
+
   Future<String> userAgentHintHeader() async {
     try {
       final packageInfo = await PackageInfo.fromPlatform();

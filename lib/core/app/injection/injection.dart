@@ -1,6 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_base/data/data_source/local/app_storage.dart';
-import 'package:flutter_base/data/data_source/local/pref/app_pref.dart';
 import 'package:flutter_base/data/data_source/remote/network/art_data_source.dart';
 import 'package:flutter_base/data/data_source/remote/network/network_api_service.dart';
 import 'package:flutter_base/data/data_source/remote/network/pokemon_data_source.dart';
@@ -12,14 +9,15 @@ import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 Future<void> initializeDependencies() async {
+  final dio =
+      await NetworkApiService().buildDioClient(baseUrl: '', versionCode: '');
+
   getIt
     // ..registerSingletonAsync<AppPref>(AppStorage.init().prefHelper)
-    ..registerSingletonAsync<Dio>(NetworkApiService().init)
+    // Init DioService
 
     // Register dataSource
-
-    ..registerLazySingleton<ArtDataSource>(ArtDataSource.new)
-    ..registerLazySingleton<PokemonDataSource>(PokemonDataSource.new)
+    ..registerLazySingleton<ArtDataSource>(() => ArtDataSource(dio))
 
     // Register repository
     ..registerLazySingleton<PokemonRepository>(PokemonRepositoryImpl.new)

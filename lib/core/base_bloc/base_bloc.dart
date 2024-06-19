@@ -31,6 +31,12 @@ abstract class BaseBloc<E extends BaseEvent, S extends BaseState>
   }
 
   @override
+  void onChange(Change<S> change) {
+    Log.instance.i(change);
+    super.onChange(change);
+  }
+
+  @override
   void onError(Object error, StackTrace stackTrace) {
     super.onError(error, stackTrace);
     Log.instance.e(error);

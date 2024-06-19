@@ -28,6 +28,16 @@ class $AssetsEnvGen {
   List<String> get values => [develop, product, qa, stag];
 }
 
+class $AssetsFontsGen {
+  const $AssetsFontsGen();
+
+  /// File path: assets/fonts/ClashGrotesk-Regular.otf
+  String get clashGroteskRegular => 'assets/fonts/ClashGrotesk-Regular.otf';
+
+  /// List of all assets
+  List<String> get values => [clashGroteskRegular];
+}
+
 class $AssetsGifGen {
   const $AssetsGifGen();
 
@@ -61,13 +71,25 @@ class $AssetsLocaleGen {
   List<String> get values => [en, vi];
 }
 
+class $AssetsRivGen {
+  const $AssetsRivGen();
+
+  /// File path: assets/riv/glow_ball.riv
+  String get glowBall => 'assets/riv/glow_ball.riv';
+
+  /// List of all assets
+  List<String> get values => [glowBall];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsEnvGen env = $AssetsEnvGen();
+  static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsGifGen gif = $AssetsGifGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLocaleGen locale = $AssetsLocaleGen();
+  static const $AssetsRivGen riv = $AssetsRivGen();
 }
 
 class AssetGenImage {
