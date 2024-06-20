@@ -10,7 +10,7 @@ import 'package:get_it/get_it.dart';
 final getIt = GetIt.instance;
 Future<void> initializeDependencies() async {
   final dio =
-      await NetworkApiService().buildDioClient(baseUrl: '', versionCode: '');
+      await NetworkApiService().buildDioClient(baseUrl: 'https://google.com', versionCode: '1.0');
 
   getIt
     // ..registerSingletonAsync<AppPref>(AppStorage.init().prefHelper)
@@ -20,6 +20,6 @@ Future<void> initializeDependencies() async {
     ..registerLazySingleton<ArtDataSource>(() => ArtDataSource(dio))
 
     // Register repository
-    ..registerLazySingleton<PokemonRepository>(PokemonRepositoryImpl.new)
+    ..registerLazySingleton<PokemonRepository>(PokemonRepositmoryImpl.new)
     ..registerLazySingleton<ArtRepository>(ArtRepositoryImpl.new);
 }

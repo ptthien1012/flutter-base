@@ -72,6 +72,7 @@ dependencies:
   calendar_view: ^1.2.0
   syncfusion_flutter_calendar: ^26.1.35
   dio_smart_retry: ^6.0.0
+  firebase_core: ^3.1.0
 
 
 dev_dependencies:

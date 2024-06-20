@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "166891242416",
+    "project_id": "mobinet-integrate",
+    "storage_bucket": "mobinet-integrate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166891242416:android:cb0f45f27eeddb835c4c75",
+        "android_client_info": {
+          "package_name": "com.example.flutter_base"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI6zXLutWdc5guWap18JuALSsohajoh6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
