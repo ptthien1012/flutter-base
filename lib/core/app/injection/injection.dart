@@ -9,8 +9,8 @@ import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 Future<void> initializeDependencies() async {
-  final dio =
-      await NetworkApiService().buildDioClient(baseUrl: '', versionCode: '');
+  final dio = await NetworkApiService()
+      .buildDioClient(baseUrl: 'http://google.com', versionCode: '12');
 
   getIt
     // ..registerSingletonAsync<AppPref>(AppStorage.init().prefHelper)

@@ -9,6 +9,9 @@ class HeaderInterceptor extends QueuedInterceptorsWrapper {
   final String authHeaderKey = 'Authorization';
   final String bearer = 'Bearer';
 
+  List<Function> _requestQueue = [];
+  bool _isRefreshing = false;
+
   @override
   Future<void> onRequest(
     RequestOptions options,
@@ -30,8 +33,16 @@ class HeaderInterceptor extends QueuedInterceptorsWrapper {
     DioException err,
     ErrorInterceptorHandler handler,
   ) async {
-    final error = err.response?.data['error_code'];
-
+    final errorCode = err.response?.data['error_code'];
+    if (errorCode == 401 && !_isRefreshing) {
+      _isRefreshing = true;
+      try {
+        // Run RefeshToken and running all function in queue;
+      } catch (_) {
+        _isRefreshing = false;
+        handler.next(err);
+      }
+    }
     // if(error == ErrorCodes.unauthorized) {
     //   // await GetIt.I.getAsync<AppPref>().then((value) => value.clearToken());
     // }
