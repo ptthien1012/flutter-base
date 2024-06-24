@@ -47,3 +47,4 @@ app.*.map.json
 # Flutter generated files
 *.g.dart
 *.freezed.dart
+lib/config/router/main_router.route.gr.dart
