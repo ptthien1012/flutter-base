@@ -29,8 +29,6 @@ Future<void> main() async {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack),
   ]);
 
-  
-
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
         ? HydratedStorage.webStorageDirectory

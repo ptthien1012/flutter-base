@@ -5,8 +5,10 @@ import 'package:flutter_base/app/bloc/app_bloc.dart';
 import 'package:flutter_base/app/bloc/app_event.dart';
 
 import 'package:flutter_base/app/bloc/app_state.dart';
+import 'package:flutter_base/config/services/notification_service.dart';
 import 'package:flutter_base/core/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:rive/rive.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -102,5 +104,13 @@ class _HomePageViewState extends State<HomePageView> {
   Future<RiveFile?> getRiverFile() async {
     final file = await RiveFile.asset('assets/riv/glow_ball.riv');
     return file;
+  }
+
+  Future<void> checkNotificationPermission() async {
+    final notificationService = NotificationService();
+    final status = await notificationService.checkNotificationPermission();
+    if (!status) {
+      await Permission.notification.request();
+    }
   }
 }
