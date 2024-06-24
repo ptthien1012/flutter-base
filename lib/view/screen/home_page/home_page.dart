@@ -5,6 +5,7 @@ import 'package:flutter_base/app/bloc/app_bloc.dart';
 import 'package:flutter_base/app/bloc/app_event.dart';
 
 import 'package:flutter_base/app/bloc/app_state.dart';
+import 'package:flutter_base/view/shared/calendar/app_calendar.dart';
 import 'package:flutter_base/core/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rive/rive.dart';
@@ -17,8 +18,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          AppBloc(const AppState())..add(SupaBaseSubscribeEvent('chat')),
+      create: (context) => AppBloc(const AppState()),
       child: const HomePageView(),
     );
   }
@@ -32,7 +32,6 @@ class HomePageView extends StatefulWidget {
 }
 
 class _HomePageViewState extends State<HomePageView> {
-  CalendarController calendarController = CalendarController();
   @override
   void initState() {
     super.initState();
@@ -40,6 +39,7 @@ class _HomePageViewState extends State<HomePageView> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = context.textTheme;
     return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
         return Container(
@@ -48,59 +48,94 @@ class _HomePageViewState extends State<HomePageView> {
           width: context.screenWidth,
           child: SafeArea(
             child: Scaffold(
-                body: Column(
-              children: [
-                Container(
-                  height: 60,
-                  width: context.screenWidth,
-                  child: ListView.separated(
-                      physics: const ClampingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          height: 60,
-                          width: context.screenWidth * 0.15,
-                          color: Colors.blue,
-                        );
-                      },
-                      separatorBuilder: (context, index) {
-                        return Container(
-                          width: 1,
-                          height: 60,
-                          color: Colors.grey.shade300,
-                        );
-                      },
-                      itemCount: 10),
-                ),
-                Expanded(
-                  child: SfCalendar(
-                    view: CalendarView.day,
-                    timeSlotViewSettings: const TimeSlotViewSettings(
-                        timeInterval: Duration(hours: 1)),
-                    headerHeight: 0,
-                    viewHeaderHeight: 0,
-                    controller: calendarController,
-                    // showNavigationArrow: model.isWebFullView,
-                    // controller: calendarController,
-                    // showDatePickerButton: true,
-                    // allowedViews: _allowedViews,
-                    // specialRegions: regions,
-                    // timeRegionBuilder: _getSpecialRegionWidget,
-                    // timeSlotViewSettings: const TimeSlotViewSettings(
-                    //     minimumAppointmentDuration: Duration(minutes: 30)),
-                    // dataSource: dataSource,
+              backgroundColor: '#F5F5F5'.toColor,
+              body: Column(
+                children: [
+                  Container(
+                    color: Colors.white,
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      children: [
+                        Stack(
+                          children: [
+                            Container(
+                              height: context.screenWidth * 0.08,
+                              width: context.screenWidth * 0.08,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.grey.shade300,
+                                border: Border.all(color: Colors.grey.shade500),
+                              ),
+                            ),
+                            Positioned(
+                              right: 0,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: Container(
+                                  height: context.screenWidth * 0.03,
+                                  width: context.screenWidth * 0.03,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.greenAccent,
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "ISC02.KieuPTP5",
+                              style: textTheme.headlineSmall?.copyWith(
+                                  fontSize: 16, fontWeight: FontWeight.w500),
+                            ),
+                            Text(
+                              'ICS - Q1 - 002',
+                              style: textTheme.bodySmall
+                                  ?.copyWith(color: Colors.grey.shade600),
+                            ),
+                          ],
+                        ),
+                        const Expanded(child: SizedBox()),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.search,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.calendar_month_rounded,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.notifications_rounded,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            )),
+                  Expanded(
+                    child: Container(),
+                  ),
+                ],
+              ),
+            ),
           ),
         );
       },
     );
-  }
-
-  Future<RiveFile?> getRiverFile() async {
-    final file = await RiveFile.asset('assets/riv/glow_ball.riv');
-    return file;
   }
 }

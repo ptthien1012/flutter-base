@@ -1,7 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_base/view/screen/app_wrapper_page/app_wrapper_page.dart';
+import 'package:flutter_base/view/screen/function_page/function_page.dart';
 import 'package:flutter_base/view/screen/home_page/home_page.dart';
-
+import 'package:flutter_base/view/screen/main_page/main_page.dart';
+import 'package:flutter_base/view/screen/person_page/person_page.dart';
+import 'package:flutter_base/view/screen/shift_backlog_page/shift_backlog_page.dart';
+import 'package:flutter_base/view/screen/supply_page/supply_page.dart';
+import 'package:flutter_base/view/screen/search_page/search_page.dart';
 part 'main_router.route.gr.dart';
 
 @AutoRouterConfig(
@@ -14,10 +19,16 @@ class AppRouter extends _$AppRouter {
   @override
   final List<AutoRoute> routes = [
     AutoRoute(
-      page: AppWrapperRoute.page,
       path: '/',
+      page: MainRoute.page,
+      initial: true,
       children: [
-        AutoRoute(page: HomeRoute.page, path: ''),
+        AutoRoute(page: HomeRoute.page, path: 'home', initial: true),
+        AutoRoute(page: PersonRoute.page, path: 'person'),
+        AutoRoute(page: FunctionRoute.page, path: 'function'),
+        AutoRoute(page: ShiftBacklogRoute.page, path: 'shiftBacklog'),
+        AutoRoute(page: SupplyRoute.page, path: 'supply'),
+        AutoRoute(page: SearchRoute.page, path: 'search'),
       ],
     ),
   ];

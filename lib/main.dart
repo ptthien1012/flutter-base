@@ -21,7 +21,7 @@ Future<void> main() async {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]),
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack),
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge),
   ]);
 
   HydratedBloc.storage = await HydratedStorage.build(
