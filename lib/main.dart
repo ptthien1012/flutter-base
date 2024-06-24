@@ -11,14 +11,13 @@ import 'package:path_provider/path_provider.dart';
 
 import 'config/router/main_router.route.dart';
 import 'core/utils/observer/route_observer.dart';
-import 'firebase_options.dart';
 
 final _appRouter = AppRouter();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   await dotenv.load(fileName: 'assets/env/develop.env');
   await Future.wait([
     initializeDependencies(),
