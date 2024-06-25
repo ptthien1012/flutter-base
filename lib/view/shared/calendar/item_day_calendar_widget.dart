@@ -21,7 +21,11 @@ class ItemDayCalendarWidget extends StatelessWidget {
       },
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
-        child: isSelected ? buildSelectedDate(context) : buildDate(context),
+        child: date.isSameDate(DateTime.now())
+            ? (isSelected
+                ? buildCurrentDateSelected(context)
+                : buildCurrentDate(context))
+            : (isSelected ? buildSelectedDate(context) : buildDate(context)),
       ),
     );
   }
@@ -51,6 +55,36 @@ class ItemDayCalendarWidget extends StatelessWidget {
   }
 
   Widget buildSelectedDate(BuildContext context) {
+    return Container(
+      color: Colors.blueAccent.shade700,
+      alignment: Alignment.center,
+      width: context.screenWidth * 0.17,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            DateFormat('d').format(date),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(
+            height: 2,
+          ),
+          Text(
+            date.formatVietnameseWeekday(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildCurrentDateSelected(BuildContext context) {
     return Center(
       child: Container(
         color: Colors.blueAccent.shade700,
@@ -62,6 +96,24 @@ class ItemDayCalendarWidget extends StatelessWidget {
             color: Colors.white,
             fontSize: 16,
             fontWeight: FontWeight.w600,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+
+  Widget buildCurrentDate(BuildContext context) {
+    return Center(
+      child: Container(
+        color: Colors.white,
+        width: context.screenWidth * 0.17,
+        alignment: Alignment.center,
+        child: Text(
+          "Hôm\nnay",
+          style: context.textTheme.titleLarge?.copyWith(
+            color: Colors.grey.shade700,
+            fontSize: 16,
           ),
           textAlign: TextAlign.center,
         ),

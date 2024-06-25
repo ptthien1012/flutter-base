@@ -17,6 +17,9 @@ class CalendarPage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
+            backgroundColor: Colors.white,
+            shadowColor: Colors.white,
+            surfaceTintColor: Colors.white,
             title: const Text("Calendar"),
           ),
           body: const AppCalendar(),

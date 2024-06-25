@@ -86,6 +86,9 @@ class ShiftHomeWidget extends StatelessWidget {
                             const BorderRadius.all(Radius.circular(8))),
                   );
                 }),
+          ),
+          const SizedBox(
+            height: 8,
           )
         ],
       ),
