@@ -10,6 +10,6 @@
 class FontFamily {
   FontFamily._();
 
-  /// Font family: Clash Grotesk
-  static const String clashGrotesk = 'Clash Grotesk';
+  /// Font family: Fontspring
+  static const String fontspring = 'Fontspring';
 }

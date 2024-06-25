@@ -49,7 +49,7 @@ class AppBarHomeWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "ISC02.KieuPTP5",
+                'ISC02.KieuPTP5',
                 style: textTheme.headlineSmall
                     ?.copyWith(fontSize: 16, fontWeight: FontWeight.w500),
               ),

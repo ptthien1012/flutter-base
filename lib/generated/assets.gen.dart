@@ -34,8 +34,11 @@ class $AssetsFontsGen {
   /// File path: assets/fonts/ClashGrotesk-Regular.otf
   String get clashGroteskRegular => 'assets/fonts/ClashGrotesk-Regular.otf';
 
+  /// File path: assets/fonts/Fontspring.otf
+  String get fontspring => 'assets/fonts/Fontspring.otf';
+
   /// List of all assets
-  List<String> get values => [clashGroteskRegular];
+  List<String> get values => [clashGroteskRegular, fontspring];
 }
 
 class $AssetsGifGen {

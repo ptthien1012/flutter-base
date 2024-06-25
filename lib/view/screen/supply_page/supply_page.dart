@@ -7,6 +7,13 @@ class SupplyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('SupplyPage'),
+      ),
+      body: const Center(
+        child: Text('SupplyPage'),
+      ),
+    );
   }
 }

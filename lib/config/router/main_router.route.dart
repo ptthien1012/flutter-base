@@ -43,7 +43,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: SearchRoute.page, path: 'search'),
       ],
     ),
-    AutoRoute(page: CalendarRoute.page, path: 'calendar'),
+    AutoRoute(page: CalendarRoute.page, path: '/calendar'),
     ...listNotificationRoute
   ];
 }

@@ -7,6 +7,13 @@ class ShiftBacklogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ShiftBacklogPage'),
+      ),
+      body: const Center(
+        child: Text('ShiftBacklogPage'),
+      ),
+    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base/core/core.dart';
 import 'package:flutter_base/view/shared/calendar/app_calendar.dart';
 
 @RoutePage()
@@ -8,6 +9,19 @@ class CalendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Container(
+      width: context.screenWidth,
+      height: context.screenHeight,
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            title: const Text("Calendar"),
+          ),
+          body: const AppCalendar(),
+        ),
+      ),
+    );
   }
 }
