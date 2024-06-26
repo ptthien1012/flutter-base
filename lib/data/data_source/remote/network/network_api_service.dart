@@ -15,7 +15,7 @@ class NetworkApiService {
     try {
       final dio = Dio()
         ..options = BaseOptions(
-          baseUrl: '$baseUrl/$versionCode}',
+          baseUrl: '$baseUrl/$versionCode',
           receiveDataWhenStatusError: true,
           connectTimeout: const Duration(seconds: 30),
           receiveTimeout: const Duration(seconds: 30),

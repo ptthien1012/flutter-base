@@ -25,6 +25,8 @@ class _AppCalendarState extends State<AppCalendar> {
     final DateTime startTime3 =
         DateTime(now.year, now.month, now.day, 16, 0, 0);
     final DateTime endTime2 = startTime3.add(const Duration(hours: 2));
+    final DateTime startTime4 = DateTime(now.year, now.month, now.day, 7, 0, 0);
+    final DateTime endTime4 = startTime4.add(const Duration(hours: 9));
     meetings
       ..add(Appointment(
         startTime: startTime,
@@ -35,14 +37,26 @@ class _AppCalendarState extends State<AppCalendar> {
       ..add(Appointment(
         startTime: startTime2,
         endTime: endTime,
-        subject: 'Demo',
-        color: Colors.blue,
+        subject: 'Meeting',
+        color: Colors.pink,
       ))
       ..add(Appointment(
         startTime: startTime3,
         endTime: endTime2,
-        subject: 'Demo',
-        color: Colors.blue,
+        subject: 'Meeting',
+        color: Colors.green,
+      ))
+      ..add(Appointment(
+        startTime: startTime4,
+        endTime: endTime4,
+        subject: 'Meeting',
+        color: Colors.amber,
+      ))
+      ..add(Appointment(
+        startTime: startTime3,
+        endTime: endTime2,
+        subject: 'Running',
+        color: Colors.black,
       ));
 
     return meetings;

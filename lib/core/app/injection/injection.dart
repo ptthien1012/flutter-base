@@ -17,8 +17,8 @@ final getIt = GetIt.instance;
 Future<void> initializeDependencies() async {
   // Init DioService
   final dio = await NetworkApiService().buildDioClient(
-      baseUrl: dotenv.env['BASE_URL'] ?? '',
-      versionCode: dotenv.env['VERSION_CODE'] ?? '');
+      baseUrl: dotenv.env['BASE_URL_ART'] ?? '',
+      versionCode: dotenv.env['VERSION_CODE_ART'] ?? '');
 
   getIt
     // Register dataSource

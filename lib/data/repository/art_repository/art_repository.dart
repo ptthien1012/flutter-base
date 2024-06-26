@@ -10,10 +10,10 @@ class ArtRepositoryImpl extends BaseApiResponse implements ArtRepository {
   final ArtDataSource _artDataSource = getIt.get<ArtDataSource>();
   @override
   Future<DataState<ArtWorkResponseModel>> fetchArts(
-      {required int page, required int limit}) {
+      {required int page, required int perPage}) {
     return getStateOf(
       request: () => _artDataSource.getArtWorks(
-        limit: limit,
+        perPage: perPage,
         page: page,
       ),
     );

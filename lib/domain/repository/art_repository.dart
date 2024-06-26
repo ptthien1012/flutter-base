@@ -3,5 +3,5 @@ import 'package:flutter_base/data/data_source/remote/response/art_work_response.
 
 abstract class ArtRepository {
   Future<DataState<ArtWorkResponseModel>> fetchArts(
-      {required int page, required int limit});
+      {required int page, required int perPage});
 }

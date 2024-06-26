@@ -4,6 +4,8 @@ import 'package:flutter_base/app/bloc/app_bloc.dart';
 import 'package:flutter_base/app/bloc/app_state.dart';
 import 'package:flutter_base/config/router/main_router.route.dart';
 import 'package:flutter_base/core/core.dart';
+import 'package:flutter_base/view/screen/home_page/cubit/home_page_cubit.dart';
+import 'package:flutter_base/view/screen/home_page/cubit/home_page_state.dart';
 import 'package:flutter_base/view/screen/home_page/widget/appbar_home_widget.dart';
 import 'package:flutter_base/view/screen/home_page/widget/receiver_widget.dart';
 import 'package:flutter_base/view/screen/home_page/widget/shift_home_widget.dart';
@@ -16,7 +18,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppBloc(const AppState()),
+      create: (context) => HomePageCubit()..getUrlArt(),
       child: const HomePageView(),
     );
   }
@@ -37,7 +39,7 @@ class _HomePageViewState extends State<HomePageView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppBloc, AppState>(
+    return BlocBuilder<HomePageCubit, HomePageState>(
       builder: (context, state) {
         return Container(
           color: Colors.white,

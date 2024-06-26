@@ -8,9 +8,9 @@ part 'art_data_source.g.dart';
 abstract class ArtDataSource {
   factory ArtDataSource(Dio dio, {String baseUrl}) = _ArtDataSource;
 
-  @GET('/images')
+  @GET('/curated')
   Future<HttpResponse<ArtWorkResponseModel>> getArtWorks({
     @Query('id') required int page,
-    @Query('limit') required int limit,
+    @Query('limit') required int perPage,
   });
 }

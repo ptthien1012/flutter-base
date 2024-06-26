@@ -69,7 +69,7 @@ dependencies:
   replay_bloc: ^0.2.5
   path_provider: ^2.1.2
   rive: ^0.13.7
-  calendar_view: ^1.2.0
+
   syncfusion_flutter_calendar: ^26.1.35
   dio_smart_retry: ^6.0.0
   dartz: ^0.10.1
