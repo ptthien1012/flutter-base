@@ -265,6 +265,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  cryptography:
+    dependency: transitive
+    description:
+      name: cryptography
+      sha256: d146b76d33d94548cf035233fbc2f4338c1242fa119013bead807d033fc4ae05
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.7.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -385,6 +393,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  flat_buffers:
+    dependency: transitive
+    description:
+      name: flat_buffers
+      sha256: "380bdcba5664a718bfd4ea20a45d39e13684f5318fcd8883066a55e21f37f4c3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "23.5.26"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -601,10 +617,10 @@ packages:
     dependency: transitive
     description:
       name: js
-      sha256: c1b2e9b5ea78c45e1a0788d29606ba27dc5f71f019f32ca5140f61ef071838cf
+      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.1"
+    version: "0.6.7"
   json_annotation:
     dependency: transitive
     description:
@@ -669,14 +685,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  lottie:
-    dependency: "direct main"
-    description:
-      name: lottie
-      sha256: a93542cc2d60a7057255405f62252533f8e8956e7e06754955669fd32fb4b216
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.7.0"
   matcher:
     dependency: transitive
     description:
@@ -733,6 +741,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
+  objectbox:
+    dependency: "direct main"
+    description:
+      name: objectbox
+      sha256: "70ff2a7538f6f8bb56136734d574f5bdc1cf29c50cd7207a14ea0c641ecb88ca"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
+  objectbox_flutter_libs:
+    dependency: "direct main"
+    description:
+      name: objectbox_flutter_libs
+      sha256: "97adc5f95d16f33c7114d56e5dec617db4300cd11ae5022134cf76fa5f30084d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
+  objectbox_generator:
+    dependency: "direct dev"
+    description:
+      name: objectbox_generator
+      sha256: "29d9295aac0a74ce44cd00afa011e0e22404e5c8f66e37587f84e3ef4b6bee52"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
   package_config:
     dependency: transitive
     description:
@@ -909,6 +941,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.1"
+  pretty_dio_logger:
+    dependency: "direct main"
+    description:
+      name: pretty_dio_logger
+      sha256: "00b80053063935cf9a6190da344c5373b9d0e92da4c944c878ff2fbef0ef6dc2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.1"
   protobuf:
     dependency: transitive
     description:
@@ -981,14 +1021,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.9"
-  rps:
-    dependency: "direct main"
-    description:
-      name: rps
-      sha256: "7a2b9a1751506a9fcaba0af11e0d84115295a7a4b8cbf84ea178283588f7c010"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.7.0"
   shared_preferences:
     dependency: transitive
     description:
@@ -1274,14 +1306,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
-  transparent_image:
-    dependency: "direct main"
-    description:
-      name: transparent_image
-      sha256: e8991d955a2094e197ca24c645efec2faf4285772a4746126ca12875e54ca02f
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
   tuple:
     dependency: transitive
     description:

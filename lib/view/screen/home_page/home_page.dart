@@ -7,6 +7,7 @@ import 'package:flutter_base/core/core.dart';
 import 'package:flutter_base/view/screen/home_page/cubit/home_page_cubit.dart';
 import 'package:flutter_base/view/screen/home_page/cubit/home_page_state.dart';
 import 'package:flutter_base/view/screen/home_page/widget/appbar_home_widget.dart';
+import 'package:flutter_base/view/screen/home_page/widget/healthy_news_widget.dart';
 import 'package:flutter_base/view/screen/home_page/widget/receiver_widget.dart';
 import 'package:flutter_base/view/screen/home_page/widget/shift_home_widget.dart';
 import 'package:flutter_base/view/screen/home_page/widget/suggest_new_shift_widget.dart';
@@ -80,14 +81,7 @@ class _HomePageViewState extends State<HomePageView> {
                             const SizedBox(height: 16),
                             const SuggestNewShiftWidget(),
                             const SizedBox(height: 16),
-                            Container(
-                              width: context.screenWidth,
-                              height: context.screenWidth * 0.2,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey.shade400,
-                              ),
-                            ),
+                            const HealthyNewsWidget(),
                             const SizedBox(height: 16),
                             Container(
                               width: context.screenWidth,

@@ -10,7 +10,7 @@ abstract class ArtDataSource {
 
   @GET('/curated')
   Future<HttpResponse<ArtWorkResponseModel>> getArtWorks({
-    @Query('id') required int page,
-    @Query('limit') required int perPage,
+    @Query('page') required int page,
+    @Query('per_page') required int perPage,
   });
 }

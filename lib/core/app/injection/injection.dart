@@ -1,6 +1,6 @@
 import 'package:flutter_base/data/data_source/remote/network/art_data_source.dart';
 import 'package:flutter_base/data/data_source/remote/network/auth_data_source.dart';
-import 'package:flutter_base/data/data_source/remote/network/network_api_service.dart';
+import 'package:flutter_base/data/data_source/remote/base/network_api_service.dart';
 import 'package:flutter_base/data/data_source/remote/network/pokemon_data_source.dart';
 import 'package:flutter_base/data/repository/art_repository/art_repository.dart';
 import 'package:flutter_base/data/repository/authen_repository/auth_repository.dart';

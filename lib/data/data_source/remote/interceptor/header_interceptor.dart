@@ -12,11 +12,13 @@ class HeaderInterceptor extends QueuedInterceptorsWrapper {
 
   bool _isRefreshing = false;
 
+
+
   @override
   Future<void> onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
-  ) async {
+) async {
     final userAgentValue = await userAgentHintHeader();
     // final appPref = await GetIt.I.getAsync<AppPref>();
     // final token = await appPref.getToken();
