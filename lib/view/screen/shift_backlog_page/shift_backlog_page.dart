@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base/view/shared/calendar/app_calendar.dart';
 
 @RoutePage()
 class ShiftBacklogPage extends StatelessWidget {
@@ -11,9 +12,7 @@ class ShiftBacklogPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('ShiftBacklogPage'),
       ),
-      body: const Center(
-        child: Text('ShiftBacklogPage'),
-      ),
+      body: const AppCalendar(),
     );
   }
 }

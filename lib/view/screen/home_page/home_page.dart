@@ -9,6 +9,7 @@ import 'package:flutter_base/view/screen/home_page/cubit/home_page_state.dart';
 import 'package:flutter_base/view/screen/home_page/widget/appbar_home_widget.dart';
 import 'package:flutter_base/view/screen/home_page/widget/receiver_widget.dart';
 import 'package:flutter_base/view/screen/home_page/widget/shift_home_widget.dart';
+import 'package:flutter_base/view/screen/home_page/widget/suggest_new_shift_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
@@ -77,14 +78,7 @@ class _HomePageViewState extends State<HomePageView> {
                             const SizedBox(height: 16),
                             const ShiftHomeWidget(),
                             const SizedBox(height: 16),
-                            Container(
-                              width: context.screenWidth,
-                              height: context.screenWidth * 0.4,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey.shade400,
-                              ),
-                            ),
+                            const SuggestNewShiftWidget(),
                             const SizedBox(height: 16),
                             Container(
                               width: context.screenWidth,
