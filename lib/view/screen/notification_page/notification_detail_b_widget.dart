@@ -11,7 +11,8 @@ class NotificationDetailBPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notification Detail'),
+        title: const Text('Thông báo'),
+        centerTitle: true,
         leading: IconButton(
           onPressed: (deepPop ?? false) ? () => context.router.popUntilRouteWithName(NotificationListRoute.name) : () async => context.router.pop(),
           icon: const Icon(Icons.arrow_back_outlined),
@@ -20,13 +21,13 @@ class NotificationDetailBPage extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(height: 16),
-          const Text('Content: Page B'),
+          const Text('Content: Page 2'),
           const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () async {
               await context.router.push(NotificationDetailCRoute());
             },
-            child: const Text('Go to Page C'),
+            child: const Text('Go to Page 3'),
           ),
         ],
       )

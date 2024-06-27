@@ -11,35 +11,48 @@ class DemoNotificationWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
-          border: Border(
-            top: BorderSide(
-              width: 2,
-              color: Colors.grey.shade600,
-            ),
-          ),
         ),
         width: MediaQuery.of(context).size.width,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
           children: [
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              child: Flexible(
-                child: SizedBox(
-                  child: Text(
-                        title,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                      ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  child: Flexible(
+                    child: SizedBox(
+                      child: Text(
+                            title,
+                            style: const TextStyle(
+                              fontSize: 16,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                          ),
 
+                    ),
+                  ),
                 ),
-              ),
+                const Icon(Icons.keyboard_arrow_right_outlined)
+              ],
+            ),
+            const SizedBox(height: 8),
+            const Row(
+              children: [
+                Icon(Icons.access_time_outlined, size: 12),
+                SizedBox(width: 4),
+                Expanded(
+                  child: Text(
+                    '12:00 PM 01/10/2024',
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                )
+              ],
             ),
           ],
         ),
