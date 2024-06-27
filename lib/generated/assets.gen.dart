@@ -34,8 +34,11 @@ class $AssetsFontsGen {
   /// File path: assets/fonts/ClashGrotesk-Regular.otf
   String get clashGroteskRegular => 'assets/fonts/ClashGrotesk-Regular.otf';
 
+  /// File path: assets/fonts/Fontspring.otf
+  String get fontspring => 'assets/fonts/Fontspring.otf';
+
   /// List of all assets
-  List<String> get values => [clashGroteskRegular];
+  List<String> get values => [clashGroteskRegular, fontspring];
 }
 
 class $AssetsGifGen {
@@ -93,9 +96,11 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(this._assetName, {this.size = null});
 
   final String _assetName;
+
+  final Size? size;
 
   Image image({
     Key? key,

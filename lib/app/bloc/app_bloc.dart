@@ -9,8 +9,5 @@ class AppBloc extends BaseBloc<SupaBaseEvent, AppState> {
       (event, emit) {},
       transformer: sequential(),
     );
-    on<SendMessages>(
-      (event, emit) async {},
-    );
   }
 }

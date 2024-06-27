@@ -1,16 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_base/app/bloc/app_bloc.dart';
-import 'package:flutter_base/app/bloc/app_event.dart';
-
 import 'package:flutter_base/app/bloc/app_state.dart';
-import 'package:flutter_base/config/services/notification_service.dart';
+import 'package:flutter_base/config/router/main_router.route.dart';
 import 'package:flutter_base/core/core.dart';
+import 'package:flutter_base/view/screen/home_page/cubit/home_page_cubit.dart';
+import 'package:flutter_base/view/screen/home_page/cubit/home_page_state.dart';
+import 'package:flutter_base/view/screen/home_page/widget/appbar_home_widget.dart';
+import 'package:flutter_base/view/screen/home_page/widget/healthy_news_widget.dart';
+import 'package:flutter_base/view/screen/home_page/widget/receiver_widget.dart';
+import 'package:flutter_base/view/screen/home_page/widget/shift_home_widget.dart';
+import 'package:flutter_base/view/screen/home_page/widget/suggest_new_shift_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:rive/rive.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -19,8 +20,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          AppBloc(const AppState())..add(SupaBaseSubscribeEvent('chat')),
+      create: (context) => HomePageCubit()..getUrlArt(),
       child: const HomePageView(),
     );
   }
@@ -34,7 +34,6 @@ class HomePageView extends StatefulWidget {
 }
 
 class _HomePageViewState extends State<HomePageView> {
-  CalendarController calendarController = CalendarController();
   @override
   void initState() {
     super.initState();
@@ -42,7 +41,7 @@ class _HomePageViewState extends State<HomePageView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppBloc, AppState>(
+    return BlocBuilder<HomePageCubit, HomePageState>(
       builder: (context, state) {
         return Container(
           color: Colors.white,
@@ -50,67 +49,68 @@ class _HomePageViewState extends State<HomePageView> {
           width: context.screenWidth,
           child: SafeArea(
             child: Scaffold(
-                body: Column(
-              children: [
-                Container(
-                  height: 60,
-                  width: context.screenWidth,
-                  child: ListView.separated(
-                      physics: const ClampingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          height: 60,
-                          width: context.screenWidth * 0.15,
-                          color: Colors.blue,
-                        );
-                      },
-                      separatorBuilder: (context, index) {
-                        return Container(
-                          width: 1,
-                          height: 60,
-                          color: Colors.grey.shade300,
-                        );
-                      },
-                      itemCount: 10),
+              backgroundColor: '#F5F5F5'.toColor,
+              body: RefreshIndicator(
+                color: Colors.grey.shade600,
+                backgroundColor: Colors.white,
+                onRefresh: () async {
+                  // ignore: inference_failure_on_instance_creation
+                  await Future.delayed(const Duration(seconds: 2));
+                },
+                child: Column(
+                  children: [
+                    const AppBarHomeWidget(),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: ListView(
+                          physics: const ClampingScrollPhysics(),
+                          children: [
+                            const ReceiverWidget(),
+                            const SizedBox(height: 16),
+                            Container(
+                              width: context.screenWidth,
+                              height: context.screenWidth * 0.4,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey.shade400,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            const ShiftHomeWidget(),
+                            const SizedBox(height: 16),
+                            const SuggestNewShiftWidget(),
+                            const SizedBox(height: 16),
+                            const HealthyNewsWidget(),
+                            const SizedBox(height: 16),
+                            Container(
+                              width: context.screenWidth,
+                              height: context.screenWidth * 0.4,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey.shade400,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            Container(
+                              width: context.screenWidth,
+                              height: context.screenWidth * 0.2,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey.shade400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                Expanded(
-                  child: SfCalendar(
-                    view: CalendarView.day,
-                    timeSlotViewSettings: const TimeSlotViewSettings(
-                        timeInterval: Duration(hours: 1)),
-                    headerHeight: 0,
-                    viewHeaderHeight: 0,
-                    controller: calendarController,
-                    // showNavigationArrow: model.isWebFullView,
-                    // controller: calendarController,
-                    // showDatePickerButton: true,
-                    // allowedViews: _allowedViews,
-                    // specialRegions: regions,
-                    // timeRegionBuilder: _getSpecialRegionWidget,
-                    // timeSlotViewSettings: const TimeSlotViewSettings(
-                    //     minimumAppointmentDuration: Duration(minutes: 30)),
-                    // dataSource: dataSource,
-                  ),
-                ),
-              ],
-            )),
+              ),
+            ),
           ),
         );
       },
     );
-  }
-
-  Future<RiveFile?> getRiverFile() async {
-    final file = await RiveFile.asset('assets/riv/glow_ball.riv');
-    return file;
-  }
-
-  Future<void> checkNotificationPermission() async {
-    final notificationService = NotificationService();
-    final status = await notificationService.checkNotificationPermission();
-    if (!status) {
-      await Permission.notification.request();
-    }
   }
 }

@@ -6,6 +6,7 @@ import 'package:flutter_base/data/data_source/remote/interceptor/dio_retry_inter
 import 'package:flutter_base/data/data_source/remote/interceptor/header_interceptor.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class NetworkApiService {
   static late Dio dio;
@@ -15,7 +16,7 @@ class NetworkApiService {
     try {
       final dio = Dio()
         ..options = BaseOptions(
-          baseUrl: '$baseUrl/$versionCode}',
+          baseUrl: '$baseUrl/$versionCode',
           receiveDataWhenStatusError: true,
           connectTimeout: const Duration(seconds: 30),
           receiveTimeout: const Duration(seconds: 30),
@@ -27,8 +28,12 @@ class NetworkApiService {
       // Interceptor header dio
       dio.interceptors.addAll([
         HeaderInterceptor(),
-        AwesomeDioInterceptor(),
         DioRetryInterceptor(dio: dio),
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseHeader: true,
+        ),
       ]);
 
       return dio;
