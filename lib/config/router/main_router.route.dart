@@ -6,17 +6,18 @@ import 'package:flutter_base/view/screen/calendar_page/calendar_page.dart';
 import 'package:flutter_base/view/screen/function_page/function_page.dart';
 import 'package:flutter_base/view/screen/home_page/home_page.dart';
 import 'package:flutter_base/view/screen/main_page/main_page.dart';
-import 'package:flutter_base/view/screen/notification_page/notification_detail_a_widget.dart';
-import 'package:flutter_base/view/screen/notification_page/notification_detail_b_widget.dart';
-import 'package:flutter_base/view/screen/notification_page/notification_detail_c_widget.dart';
-import 'package:flutter_base/view/screen/notification_page/notification_first_layer_wrapper.dart';
+import 'package:flutter_base/view/screen/notification_page/widget/notification_detail_a_widget.dart';
+import 'package:flutter_base/view/screen/notification_page/widget/notification_detail_b_widget.dart';
+import 'package:flutter_base/view/screen/notification_page/widget/notification_detail_c_widget.dart';
+import 'package:flutter_base/view/screen/notification_page/widget/notification_first_layer_wrapper.dart';
 import 'package:flutter_base/view/screen/notification_page/notification_list_page.dart';
-import 'package:flutter_base/view/screen/notification_page/notification_main_layer_wrapper.dart';
-import 'package:flutter_base/view/screen/notification_page/notification_second_layer_wrapper.dart';
-import 'package:flutter_base/view/screen/notification_page/notification_third_layer_wrapper.dart';
+import 'package:flutter_base/view/screen/notification_page/widget/notification_main_layer_wrapper.dart';
+import 'package:flutter_base/view/screen/notification_page/widget/notification_second_layer_wrapper.dart';
+import 'package:flutter_base/view/screen/notification_page/widget/notification_third_layer_wrapper.dart';
 import 'package:flutter_base/view/screen/person_page/person_page.dart';
 import 'package:flutter_base/view/screen/search_page/search_page.dart';
 import 'package:flutter_base/view/screen/shift_backlog_page/shift_backlog_page.dart';
+import 'package:flutter_base/view/screen/schedule_list_page/schedule_list_page.dart';
 import 'package:flutter_base/view/screen/supply_page/supply_page.dart';
 
 part 'main_router.route.gr.dart';
@@ -44,6 +45,7 @@ class AppRouter extends _$AppRouter {
       ],
     ),
     AutoRoute(page: CalendarRoute.page, path: '/calendar'),
+    AutoRoute(page: ScheduleListRoute.page, path: '/scheduleList'),
     ...listNotificationRoute
   ];
 }

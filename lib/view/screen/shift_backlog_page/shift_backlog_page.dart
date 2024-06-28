@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base/view/screen/schedule_list_page/widget/schedule_content.dart';
 import 'package:flutter_base/view/shared/calendar/app_calendar.dart';
 
 @RoutePage()
@@ -8,11 +9,10 @@ class ShiftBacklogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('ShiftBacklogPage'),
+    return const SafeArea(
+      child: Scaffold(
+        body: ScheduleContent(index: 0),
       ),
-      body: const AppCalendar(),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_base/config/router/main_router.route.dart';
 import 'package:flutter_base/config/router/router_path.dart';
-import 'package:flutter_base/view/screen/notification_page/notification_main_layer_wrapper.dart';
+import 'package:flutter_base/view/screen/notification_page/widget/notification_main_layer_wrapper.dart';
 
 final listNotificationRoute = [
   AutoRoute(

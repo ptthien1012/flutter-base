@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base/config/router/app_routes.route.dart';
 import 'package:flutter_base/config/router/router_path.dart';
 import 'package:flutter_base/core/utils/extensions/string_extension.dart';
-import 'package:flutter_base/view/screen/notification_page/notification_widget.dart';
+import 'package:flutter_base/view/screen/notification_page/widget/notification_widget.dart';
+import 'package:flutter_base/view/screen/schedule_list_page/widget/schedule_list_item.dart';
 
 @RoutePage()
 class NotificationListPage extends StatelessWidget {
@@ -22,48 +23,56 @@ class NotificationListPage extends StatelessWidget {
         ),
       ),
       backgroundColor: '#F5F5F5'.toColor,
-      body: Column(
-        children: [
-          const SizedBox(height: 8),
-          const DefaultTabController(
-            initialIndex: 1,
-            length: 3,
-            child: TabBar(
-              labelColor: Colors.black,
-              unselectedLabelColor: Colors.grey,
-              indicatorColor: Colors.black,
-              tabs: [
-                Tab(text: 'Tất cả'),
-                Tab(text: 'Công việc'),
-                Tab(text: 'Truyền thông'),
-              ],
+      body: RefreshIndicator(
+        color: Colors.grey.shade600,
+        backgroundColor: Colors.white,
+        onRefresh: () async {
+          // ignore: inference_failure_on_instance_creation
+          await Future.delayed(const Duration(seconds: 2));
+        },
+        child: Column(
+          children: [
+            const SizedBox(height: 8),
+            const DefaultTabController(
+              initialIndex: 1,
+              length: 3,
+              child: TabBar(
+                labelColor: Colors.black,
+                unselectedLabelColor: Colors.grey,
+                indicatorColor: Colors.black,
+                tabs: [
+                  Tab(text: 'Tất cả'),
+                  Tab(text: 'Công việc'),
+                  Tab(text: 'Truyền thông'),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          permissionAlert(context),
-          const SizedBox(height: 8),
-          ListView(shrinkWrap: true, children: [
-            DemoNotificationWidget(
-                onTap: () async {
-                  await context.router.push(const NotificationDetailARoute());
-                },
-                title: 'PT Map Version 2.0 tích hợp trên App MyPT Version 2.0 hỗ trợ nhân viên kỹ thuật page 1'),
             const SizedBox(height: 8),
-            DemoNotificationWidget(
-                onTap: () async {
-                  await context.router.pushNamed(
-                      '/notification/${RouterPath.notificationDetailARoute}/${RouterPath.notificationDetailBRoute}/deepPop=false');
-                },
-                title: 'PT Map Version 2.0 tích hợp trên App MyPT Version 2.0 hỗ trợ nhân viên kỹ thuật page 2'),
+            permissionAlert(context),
             const SizedBox(height: 8),
-            DemoNotificationWidget(
-                onTap: () async {
-                  await context.router.pushNamed(
-                      '/notification/${RouterPath.notificationDetailARoute}/${RouterPath.notificationDetailBRoute}/${RouterPath.notificationDetailCRoute}/false');
-                },
-                title: 'PT Map Version 2.0 tích hợp trên App MyPT Version 2.0 hỗ trợ nhân viên kỹ thuật page 3'),
-          ]),
-        ],
+            ListView(shrinkWrap: true, children: [
+              DemoNotificationWidget(
+                  onTap: () async {
+                    await context.router.push(const NotificationDetailARoute());
+                  },
+                  title: 'PT Map Version 2.0 tích hợp trên App MyPT Version 2.0 hỗ trợ nhân viên kỹ thuật page 1'),
+              const SizedBox(height: 8),
+              DemoNotificationWidget(
+                  onTap: () async {
+                    await context.router.pushNamed(
+                        '/notification/${RouterPath.notificationDetailARoute}/${RouterPath.notificationDetailBRoute}/deepPop=false');
+                  },
+                  title: 'PT Map Version 2.0 tích hợp trên App MyPT Version 2.0 hỗ trợ nhân viên kỹ thuật page 2'),
+              const SizedBox(height: 8),
+              DemoNotificationWidget(
+                  onTap: () async {
+                    await context.router.pushNamed(
+                        '/notification/${RouterPath.notificationDetailARoute}/${RouterPath.notificationDetailBRoute}/${RouterPath.notificationDetailCRoute}/false');
+                  },
+                  title: 'PT Map Version 2.0 tích hợp trên App MyPT Version 2.0 hỗ trợ nhân viên kỹ thuật page 3'),
+            ]),
+          ],
+        ),
       ),
     );
   }

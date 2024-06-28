@@ -81,21 +81,26 @@ class ShiftHomeWidget extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: 4,
                 itemBuilder: (_, __) {
-                  return Container(
-                    width: context.screenWidth * 0.2,
-                    height: context.screenWidth * 0.2,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.receipt_long_rounded,
-                          size: 24,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text("Triển khai")
-                      ],
+                  return GestureDetector(
+                    onTap: () async {
+                      await context.pushRoute(const ScheduleListRoute());
+                    },
+                    child: Container(
+                      width: context.screenWidth * 0.2,
+                      height: context.screenWidth * 0.2,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.receipt_long_rounded,
+                            size: 24,
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Text("Triển khai")
+                        ],
+                      ),
                     ),
                   );
                 }),
